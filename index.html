@@ -7,49 +7,44 @@
     body {
       margin: 0;
       padding: 0;
-      background: #ffe6f0;
-      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #f8cdda);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
+      padding: 30px;
     }
 
-    .glow-text {
+    .glow-title {
       font-size: 40px;
       font-weight: bold;
-      color: #ff66cc;
-      text-shadow: 0 0 5px #ff66cc,
-                   0 0 10px #ff66cc,
-                   0 0 20px #ff3399,
-                   0 0 40px #ff0066;
-      animation: glow 2s ease-in-out infinite alternate;
+      background: linear-gradient(to right, #ff5e99, #ff66cc, #ff85a2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
       margin-bottom: 20px;
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #ff66cc,
-                     0 0 10px #ff66cc,
-                     0 0 20px #ff3399,
-                     0 0 30px #ff0066;
-      }
-      to {
-        text-shadow: 0 0 10px #ff99cc,
-                     0 0 20px #ff6699,
-                     0 0 30px #ff3399,
-                     0 0 50px #ff0066;
-      }
+      from { text-shadow: 0 0 10px #ff66cc; }
+      to { text-shadow: 0 0 20px #ff99cc; }
     }
 
     .heart {
       width: 100px;
       height: 90px;
       position: relative;
+      margin: 0 auto 30px;
       animation: pulse 1s infinite;
-      margin-bottom: 30px;
     }
 
     .heart::before,
@@ -57,9 +52,9 @@
       content: "";
       width: 100px;
       height: 90px;
-      background: red;
-      border-radius: 50px 50px 0 0;
+      background: #ff4d6d;
       position: absolute;
+      border-radius: 50px 50px 0 0;
       top: 0;
     }
 
@@ -77,28 +72,146 @@
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.15); }
       100% { transform: scale(1); }
     }
 
     h1 {
-      color: #ff4d88;
-      font-size: 36px;
-      text-shadow: 1px 1px 5px #ffb3cc;
+      font-size: 32px;
+      color: #e60073;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 20px;
-      color: #cc0066;
+      color: #660033;
+      line-height: 1.6;
       max-width: 600px;
-      padding: 0 20px;
     }
+
+    .surprise {
+      margin-top: 30px;
+    }
+
+    .surprise-btn {
+      background: #ff66b2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .surprise-btn:hover {
+      background: #ff3385;
+    }
+
+    #hiddenMessage {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #d10075;
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: #ff80ab;
+      animation: float 10s linear infinite;
+      opacity: 0.6;
+      transform: rotate(45deg);
+    }
+
+    .floating-hearts span::before,
+    .floating-hearts span::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff80ab;
+      border-radius: 50%;
+    }
+
+    .floating-hearts span::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .floating-hearts span::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Random placement */
+    .floating-hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .floating-hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .floating-hearts span:nth-child(3) { left: 40%; animation-delay: 4s; }
+    .floating-hearts span:nth-child(4) { left: 60%; animation-delay: 1s; }
+    .floating-hearts span:nth-child(5) { left: 75%; animation-delay: 3s; }
+    .floating-hearts span:nth-child(6) { left: 90%; animation-delay: 5s; }
+
   </style>
 </head>
 <body>
-  <div class="glow-text">I LOVE YOU MY SWEETHEART</div>
-  <div class="heart"></div>
-  <h1>For My Love, Shrabonti</h1>
-  <p>You light up my world more than words can say. This little page is just a tiny reminder of how much I love you, Shrabonti.</p>
+  <div class="floating-hearts">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="container">
+    <div class="glow-title">I LOVE YOU MY SWEETHEART</div>
+    <div class="heart"></div>
+    <h1>For My Love, Shrabonti</h1>
+    <p>You are the sunshine in my darkest days and the calm in my chaos.<br>This page is a piece of my heart — made just for you.</p>
+    
+    <div class="surprise">
+      <button class="surprise-btn" onclick="showMessage()">Click for a Surprise</button>
+      <div id="hiddenMessage">You're my forever, Shrabonti. Always and forever, just us two.</div>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById("hiddenMessage");
+      msg.style.display = "block";
+    }
+  </script>
 </body>
 </html>
