@@ -7,15 +7,16 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffdde1, #f8cdda);
+      background: #0d0d0d;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow: hidden;
+      color: #aaffaa;
     }
 
     .container {
       position: relative;
       z-index: 2;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -24,19 +25,23 @@
       padding: 30px;
     }
 
+    .hidden-content {
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
     .glow-title {
       font-size: 40px;
       font-weight: bold;
-      background: linear-gradient(to right, #ff5e99, #ff66cc, #ff85a2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #66ff66;
+      text-shadow: 0 0 15px #33cc33;
       animation: glow 2s infinite alternate;
       margin-bottom: 20px;
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #ff66cc; }
-      to { text-shadow: 0 0 20px #ff99cc; }
+      from { text-shadow: 0 0 10px #33cc33; }
+      to { text-shadow: 0 0 25px #66ff66; }
     }
 
     .heart {
@@ -52,7 +57,7 @@
       content: "";
       width: 100px;
       height: 90px;
-      background: #ff4d6d;
+      background: #00cc66;
       position: absolute;
       border-radius: 50px 50px 0 0;
       top: 0;
@@ -78,47 +83,37 @@
 
     h1 {
       font-size: 32px;
-      color: #e60073;
+      color: #88ff88;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #44ff44;
     }
 
     p {
       font-size: 20px;
-      color: #660033;
+      color: #b3ffb3;
       line-height: 1.6;
       max-width: 600px;
     }
 
-    .surprise {
-      margin-top: 30px;
-    }
-
     .surprise-btn {
-      background: #ff66b2;
-      color: white;
+      background: #00cc66;
+      color: #000;
       border: none;
-      padding: 12px 24px;
-      font-size: 18px;
+      padding: 14px 28px;
+      font-size: 20px;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+      box-shadow: 0 5px 15px rgba(0, 255, 100, 0.4);
       transition: all 0.3s ease;
+      margin-bottom: 40px;
     }
 
     .surprise-btn:hover {
-      background: #ff3385;
-    }
-
-    #hiddenMessage {
-      margin-top: 20px;
-      font-size: 22px;
-      color: #d10075;
-      display: none;
-      animation: fadeIn 1s ease forwards;
+      background: #00e676;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -139,9 +134,9 @@
       display: block;
       width: 20px;
       height: 20px;
-      background: #ff80ab;
+      background: #33cc66;
       animation: float 10s linear infinite;
-      opacity: 0.6;
+      opacity: 0.4;
       transform: rotate(45deg);
     }
 
@@ -151,7 +146,7 @@
       position: absolute;
       width: 20px;
       height: 20px;
-      background: #ff80ab;
+      background: #33cc66;
       border-radius: 50%;
     }
 
@@ -179,14 +174,12 @@
       }
     }
 
-    /* Random placement */
     .floating-hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
     .floating-hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
     .floating-hearts span:nth-child(3) { left: 40%; animation-delay: 4s; }
     .floating-hearts span:nth-child(4) { left: 60%; animation-delay: 1s; }
     .floating-hearts span:nth-child(5) { left: 75%; animation-delay: 3s; }
     .floating-hearts span:nth-child(6) { left: 90%; animation-delay: 5s; }
-
   </style>
 </head>
 <body>
@@ -196,21 +189,22 @@
   </div>
 
   <div class="container">
-    <div class="glow-title">I LOVE YOU MY SWEETHEART</div>
-    <div class="heart"></div>
-    <h1>For My Love, Shrabonti</h1>
-    <p>You are the sunshine in my darkest days and the calm in my chaos.<br>This page is a piece of my heart — made just for you.</p>
+    <button class="surprise-btn" onclick="revealLove()">Click here for a surprise</button>
     
-    <div class="surprise">
-      <button class="surprise-btn" onclick="showMessage()">Click for a Surprise</button>
-      <div id="hiddenMessage">You're my forever, Shrabonti. Always and forever, just us two.</div>
+    <div class="hidden-content" id="loveMessage">
+      <div class="glow-title">I LOVE YOU MY SWEETHEART</div>
+      <div class="heart"></div>
+      <h1>For My Love, Shrabonti</h1>
+      <p>
+        You are the reason I smile every day. Your love lights up my world more than you’ll ever know.<br>
+        This page is just a small gift to show how deeply and endlessly I love you, Shrabonti.
+      </p>
     </div>
   </div>
 
   <script>
-    function showMessage() {
-      const msg = document.getElementById("hiddenMessage");
-      msg.style.display = "block";
+    function revealLove() {
+      document.getElementById("loveMessage").style.display = "block";
     }
   </script>
 </body>
